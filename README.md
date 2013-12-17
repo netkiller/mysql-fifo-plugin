@@ -23,7 +23,7 @@ Plugin Install and Uninstall
 			
 Testing
 -------
-### ´´½¨¹ÜµÀ	
+### åˆ›å»ºç®¡é“	
 	mysql> create function fifo_create returns string soname 'fifo.so';
 	Query OK, 0 rows affected (0.02 sec)
 
@@ -35,12 +35,12 @@ Testing
 	+----------------------------+
 	1 row in set (0.00 sec)
 	
-	²é¿´¹ÜµÀÊÇ·ñ´´½¨
+	æŸ¥çœ‹ç®¡é“æ˜¯å¦åˆ›å»º
 	
 	$ ls /tmp/myfifo 
 	/tmp/myfifo
 	
-	¸²¸Ç²âÊÔ£¬ÕýÈ·Ó¦¸Ã·µ»Øfalse
+	è¦†ç›–æµ‹è¯•ï¼Œæ­£ç¡®åº”è¯¥è¿”å›žfalse
 	
 	mysql> select fifo_create('/tmp/myfifo');
 	+----------------------------+
@@ -50,7 +50,7 @@ Testing
 	+----------------------------+
 	1 row in set (0.00 sec)
 
-### É¾³ý¹ÜµÀ	
+### åˆ é™¤ç®¡é“	
 	mysql> select fifo_remove('/tmp/myfifo');
 	+----------------------------+
 	| fifo_remove('/tmp/myfifo') |
@@ -67,11 +67,11 @@ Testing
 	+------------------------+
 	1 row in set (0.00 sec)
 
-	É¾³ý²»´æÔÚµÄ¹ÜµÀ»áÌáÊ¾ false
+	åˆ é™¤ä¸å­˜åœ¨çš„ç®¡é“ä¼šæç¤º false
 
-### ¶Á¹ÜµÀ
+### è¯»ç®¡é“
 
-	ÔÚÒ»¸öÖÕ¶Ë´°¿ÚÖÐÔËÐÐ
+	åœ¨ä¸€ä¸ªç»ˆç«¯çª—å£ä¸­è¿è¡Œ
 	mysql> select fifo_read('/tmp/myfifo');
 	+--------------------------+
 	| fifo_read('/tmp/myfifo') |
@@ -80,7 +80,7 @@ Testing
 	+--------------------------+
 	1 row in set (7.85 sec)
 
-	ÔÚÁíÒ»¸öÖÕ¶Ë´°¿ÚÖÐÔËÐÐ
+	åœ¨å¦ä¸€ä¸ªç»ˆç«¯çª—å£ä¸­è¿è¡Œ
 	mysql> select fifo_write('/tmp/myfifo','Hello world !!!');
 	+---------------------------------------------+
 	| fifo_write('/tmp/myfifo','Hello world !!!') |
@@ -89,12 +89,12 @@ Testing
 	+---------------------------------------------+
 	1 row in set (0.00 sec)	
 	
-	»òÕß
+	æˆ–è€…
 	
-	ÔÚÃüÁîÐÐÔËÐÐ
+	åœ¨å‘½ä»¤è¡Œè¿è¡Œ
 	$ echo "Hello world" > /tmp/myfifo
 	
-	ÔÚSQL¿Í»§¶ËÖÐÔËÐÐ
+	åœ¨SQLå®¢æˆ·ç«¯ä¸­è¿è¡Œ
 	mysql> select fifo_read('/tmp/myfifo');
 	+--------------------------+
 	| fifo_read('/tmp/myfifo') |
@@ -103,7 +103,7 @@ Testing
 				 |
 	+--------------------------+
 	1 row in set (0.00 sec)
-	×¢ÒâÉÏÃæecho»á×Ô¶¯Ôö¼Ó»»ÐÐ·û£¬-n²ÎÊý¿ÉÒÔ±ÜÃâ
+	æ³¨æ„ä¸Šé¢echoä¼šè‡ªåŠ¨å¢žåŠ æ¢è¡Œç¬¦ï¼Œ-nå‚æ•°å¯ä»¥é¿å…
 	$ echo -n "Hello world" > /tmp/myfifo
 	
 	mysql> select fifo_read('/tmp/myfifo');
@@ -114,7 +114,7 @@ Testing
 	+--------------------------+
 	1 row in set (0.01 sec)
 	
-### Ð´¹ÜµÀ
+### å†™ç®¡é“
 	mysql> select fifo_write('/tmp/myfifo','Hello world !!!');
 	+---------------------------------------------+
 	| fifo_write('/tmp/myfifo','Hello world !!!') |
@@ -126,3 +126,15 @@ Testing
 	$ cat /tmp/myfifo
 	Hello world !!!
 	
+	ç®¡é“ /tmp/nofifo ä¸å­˜åœ¨ä¼šè¿”å›žfalse
+	mysql> select fifo_write('/tmp/nofifo',concat(mobile,'\r\n')) from demo;
+	+-------------------------------------------------+
+	| fifo_write('/tmp/nofifo',concat(mobile,'\r\n')) |
+	+-------------------------------------------------+
+	| false                                           |
+	| false                                           |
+	| false                                           |
+	| false                                           |
+	| false                                           |
+	+-------------------------------------------------+
+	5 rows in set (0.01 sec)	
