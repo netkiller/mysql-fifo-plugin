@@ -5,8 +5,14 @@ MySQL Pipes (FIFOs) Plugin
 
 Build
 -----
-	gcc -O3  -g  -I/usr/include/mysql -I/usr/include  -fPIC -lm -lz -shared -o fifo.so fifo.c
-	sudo mv fifo.so /usr/lib/mysql/plugin/
+	cmake .
+	make
+	make install
+
+	or
+	
+	gcc -O3  -g  -I/usr/include/mysql -I/usr/include  -fPIC -lm -lz -shared -o libfifo.so fifo.c
+	sudo mv libfifo.so /usr/lib/mysql/plugin/
 	
 Plugin Install and Uninstall
 --------------
@@ -16,15 +22,15 @@ Plugin Install and Uninstall
 	drop function fifo_read;
 	drop function fifo_write;
 
-	create function fifo_create returns string soname 'fifo.so';
-	create function fifo_remove returns string soname 'fifo.so';
-	create function fifo_read returns string soname 'fifo.so';
-	create function fifo_write returns string soname 'fifo.so';
+	create function fifo_create returns string soname 'libfifo.so';
+	create function fifo_remove returns string soname 'libfifo.so';
+	create function fifo_read returns string soname 'libfifo.so';
+	create function fifo_write returns string soname 'libfifo.so';
 			
 Testing
 -------
 ### 创建管道	
-	mysql> create function fifo_create returns string soname 'fifo.so';
+	mysql> create function fifo_create returns string soname 'libfifo.so';
 	Query OK, 0 rows affected (0.02 sec)
 
 	mysql> select fifo_create('/tmp/myfifo');
