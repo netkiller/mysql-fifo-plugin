@@ -16,3 +16,11 @@
 *.exe
 *.out
 *.app
+
+/CMakeCache.txt
+/install_manifest.txt
+/CMakeFiles
+
+/cmake_install.cmake
+
+/Makefile
