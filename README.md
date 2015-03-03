@@ -144,3 +144,7 @@ Testing
 	| false                                           |
 	+-------------------------------------------------+
 	5 rows in set (0.01 sec)	
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/netkiller/mysql-fifo-plugin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
