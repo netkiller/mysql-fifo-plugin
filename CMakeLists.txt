@@ -3,5 +3,4 @@ PROJECT(fifo)
 ADD_LIBRARY(fifo SHARED fifo.c)
 INCLUDE_DIRECTORIES(/usr/include/mysql)
 #TARGET_LINK_LIBRARIES(fifo )
-INSTALL(PROGRAMS libfifo.so DESTINATION /usr/lib/mysql/plugin/)
-
+INSTALL(PROGRAMS libfifo.so DESTINATION /usr/lib64/mysql/plugin/)
