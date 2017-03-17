@@ -5,6 +5,10 @@ MySQL Pipes (FIFOs) Plugin
 
 Build
 -----
+	cd /usr/local/src/
+	git clone https://github.com/netkiller/mysql-fifo-plugin.git
+	cd mysql-fifo-plugin/
+	
 	cmake .
 	make
 	make install
@@ -17,16 +21,20 @@ Build
 Plugin Install and Uninstall
 --------------
 
-	drop function fifo_create;
-	drop function fifo_remove;
-	drop function fifo_read;
-	drop function fifo_write;
+### Install
 
 	create function fifo_create returns string soname 'libfifo.so';
 	create function fifo_remove returns string soname 'libfifo.so';
 	create function fifo_read returns string soname 'libfifo.so';
 	create function fifo_write returns string soname 'libfifo.so';
-			
+
+### Uninstall
+
+	drop function fifo_create;
+	drop function fifo_remove;
+	drop function fifo_read;
+	drop function fifo_write;
+
 Testing
 -------
 ### 创建管道	
@@ -145,6 +153,15 @@ Testing
 	+-------------------------------------------------+
 	5 rows in set (0.01 sec)	
 
+# Donations
+
+We accept PayPal through:
+
+https://www.paypal.me/netkiller
+
+Wechat (微信) / Alipay (支付宝) 打赏:
+
+http://www.netkiller.cn/home/donations.html
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/netkiller/mysql-fifo-plugin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
